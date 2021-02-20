@@ -1,7 +1,8 @@
-
+const axios = require("axios");
 const fs = require('fs');
 const inquirer = require('inquirer');
-const questions = []
+//const generateMD = require("./generateMarkdown");
+//const questions = []
 
 
 
@@ -35,7 +36,13 @@ inquirer
         {
             type: "list",
             name: "license",
-            message: 'Please choose the correct license for your project'
+            message: 'Please choose the correct license for your project',
+            choices: ['Apache License 2.0', 'GNU General Pubic License v3.0', 'MIT License',
+                'BSD 2-Clause "Simplified"License', 'BSD 3-Clause "New" or "Revised" License',
+                'Boost Software Licesnse 1.0', 'Creative Commons Zero v1.0 Universal',
+                'Eclipse Public License 2.0', 'GNU Affero General Public License v3.0',
+                'GNU General Public License v2.0', 'GNU Lesser General Public Licesnse v2.1',
+                'Mozilla Public Licesnse 2.0', 'The Unilicense', 'none'],
         },
         {
             type: "input",
@@ -54,9 +61,31 @@ inquirer
         }
 
     ])
-    .then((answers) => {
-        console.log(answers);
-    })
+    .then((response) => {
+        axios.get(`https://api.github.com/users${response.Github}`).then(function (answers) {
+
+            console.log(answers);
+            const md = `
+            # ${answers.repoTitle} \n
+            
+            ###### ${answers.description} \n
+    
+            
+            
+            `;
+
+            fs.writeFile("README.md", md, (err) => {
+                if (err) {
+                    console.log("err: " + err);
+                } else {
+                    console.log("Succesfully created your README.md!! ya da bomb");
+                }
+            });
+
+        });
+
+
+    });
 
 
 
