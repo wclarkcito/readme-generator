@@ -1,6 +1,9 @@
+
 const axios = require("axios");
 const fs = require('fs');
 const inquirer = require('inquirer');
+const generateMarkdown = require("./generateMarkdown");
+// const generateMarkdown = require("./generateMarkdown");
 //const generateMD = require("./generateMarkdown");
 //const questions = []
 
@@ -10,7 +13,7 @@ inquirer
     .prompt([
         {
             type: "input",
-            name: "repoTitle",
+            name: "title",
             message: 'What is the name of your Repository?'
         },
         {
@@ -37,12 +40,9 @@ inquirer
             type: "list",
             name: "license",
             message: 'Please choose the correct license for your project',
-            choices: ['Apache License 2.0', 'GNU General Pubic License v3.0', 'MIT License',
-                'BSD 2-Clause "Simplified"License', 'BSD 3-Clause "New" or "Revised" License',
-                'Boost Software Licesnse 1.0', 'Creative Commons Zero v1.0 Universal',
-                'Eclipse Public License 2.0', 'GNU Affero General Public License v3.0',
-                'GNU General Public License v2.0', 'GNU Lesser General Public Licesnse v2.1',
-                'Mozilla Public Licesnse 2.0', 'The Unilicense', 'none'],
+            choices: ['Apache License 2.0', 'MIT License',
+                'Boost Software Licesnse 1.0',
+                'Mozilla Public Licesnse 2.0', 'none'],
         },
         {
             type: "input",
@@ -62,30 +62,54 @@ inquirer
 
     ])
     .then((response) => {
-        axios.get(`https://api.github.com/users${response.Github}`).then(function (answers) {
+        let badge = ""
+        switch (response.license) {
+            case 'Apache License 2.0':
+                badge = '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)'
+                break;
+            case 'MIT License':
+                badge = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
+                break;
+            case 'Boost Software Licesnse 1.0':
+                badge = '[![License](https://img.shields.io/badge/License-Boost%201.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)'
+                break;
+            case 'Mozilla Public Licesnse 2.0':
+                badge = '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)'
+                break;
 
-            console.log(answers);
-            const md = `
-            # ${answers.repoTitle} \n
-            
-            ###### ${answers.description} \n
-    
-            
-            
-            `;
+        }
+        response = {
+            badge: badge,
+            ...response
+        }
+        console.log(response)
+        const repo = generateMarkdown(response)
 
-            fs.writeFile("README.md", md, (err) => {
-                if (err) {
-                    console.log("err: " + err);
-                } else {
-                    console.log("Succesfully created your README.md!! ya da bomb");
-                }
-            });
 
+        //     axios.get(`https://api.github.com/users${response.Github}`).then(function (answers) {
+
+        //         console.log(answers);
+        //         const md = `
+        //         # ${answers.repoTitle} \n
+
+        //         ###### ${answers.description} \n
+
+
+
+        //         `;
+
+        fs.writeFile("README2.md", repo, (err) => {
+            if (err) {
+                console.log("err: " + err);
+            } else {
+                console.log("Succesfully created your README.md!! ya da bomb");
+            }
         });
+    })
+//         });
 
 
-    });
+//     });
 
 
 
