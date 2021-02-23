@@ -98,7 +98,7 @@ inquirer
 
 
 
-        fs.writeFile("README2.md", repo, (err) => {
+        fs.writeFile("README.md", repo, (err) => {
             if (err) {
                 console.log("err: " + err);
             } else {

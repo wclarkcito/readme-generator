@@ -12,35 +12,46 @@ function renderLicenseSection(license) { }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-    return `#${data.title}
-    ##Table of Contents
-    ##1.[Installation](#installation)
-    ##2.[Usage](#usage)
-    ##3.[License](#license)
-    ##4.[Contributing](#contributing)
-    ##5.[Tests](#tests)
-    ##6.[Questions](#questions)
-    ##7.[Description](#description)
+    return `# ${data.title}
+## Table of Contents
+## 1.[Installation](#installation)
+## 2.[Usage](#usage)
+## 3.[License](#license)
+## 4.[Contributing](#contributing)
+## 5.[Tests](#tests)
+## 6.[Questions](#questions)
+## 7.[Description](#description)
     
-    #Installation<a name="installation"></a>
-    ${data.install}
+<a name="installation"></a>
+# Installation
+${data.install}
 
-    #Usage<a name="usage"></a>
-    ${data.usage}
-    
-    #License<a name="license"></a>
-    ${data.badge}
-    #Contributing<a name="contributing"></a>
-    ${data.contributing}
-    #Tests<a name="tests"></a>
-    ${data.tests}
-    #Questions<a name="questions"></a>
-    *${data.Email}
-    *https://github.com/${data.Github}
-    #Description<a name="description"></a>
-    ${data.description}
+<a name="usage"></a>
+# Usage
+${data.usage}
 
-    `
+<a name="license"></a>
+# License
+${data.badge}
+
+<a name="contributing"></a>
+# Contributing
+${data.contributors}
+
+<a name="tests"></a>
+# Tests
+${data.tests}
+
+<a name="questions"></a>
+# Questions
+* ${data.Email}
+* https://github.com/${data.Github}
+
+<a name="description"></a>
+# Description
+${data.description}
+
+`
 }
 
 module.exports = generateMarkdown;
