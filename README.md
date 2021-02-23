@@ -1,39 +1,14 @@
-# fasdf
-## Table of Contents
-## 1.[Installation](#installation)
-## 2.[Usage](#usage)
-## 3.[License](#license)
-## 4.[Contributing](#contributing)
-## 5.[Tests](#tests)
-## 6.[Questions](#questions)
-## 7.[Description](#description)
-    
-<a name="installation"></a>
-# Installation
-asdf
+# Project Generator Machine!
 
-<a name="usage"></a>
-# Usage
-asdf
+### This program dynamically creates a professional readme file based off of information the user provides through prompts in the terminal. It will update content in the README1.md file once entered.
 
-<a name="license"></a>
-# License
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+## Screenshots
 
-<a name="contributing"></a>
-# Contributing
-asdf
+![Screen Shot 2021-02-23 at 2 49 20 PM](https://user-images.githubusercontent.com/73144564/108918648-9523a080-75e6-11eb-8785-bdfc0b317859.png)
+![Screen Shot 2021-02-23 at 2 48 56 PM](https://user-images.githubusercontent.com/73144564/108918720-ae2c5180-75e6-11eb-9038-c5aad51ba93b.png)
 
-<a name="tests"></a>
-# Tests
-asdf
+## Link to Video Walkthrough
 
-<a name="questions"></a>
-# Questions
-* asdf
-* https://github.com/asdf
+## https://drive.google.com/file/d/1-aG1TPe0gCpKXWB0C9itOw4yirTOPK8I/view
 
-<a name="description"></a>
-# Description
-asdf
-
+## https://github.com/wclarkcito/readme-generator

@@ -84,11 +84,6 @@ inquirer
 
 
 
-
-
-
-
-
         response = {
             badge: badge,
             ...response
@@ -98,7 +93,7 @@ inquirer
 
 
 
-        fs.writeFile("README.md", repo, (err) => {
+        fs.writeFile("README1.md", repo, (err) => {
             if (err) {
                 console.log("err: " + err);
             } else {
