@@ -2,6 +2,7 @@
 const axios = require("axios");
 const fs = require('fs');
 const inquirer = require('inquirer');
+const { title } = require("process");
 const generateMarkdown = require("./generateMarkdown");
 // const generateMarkdown = require("./generateMarkdown");
 //const generateMD = require("./generateMarkdown");
@@ -77,7 +78,20 @@ inquirer
                 badge = '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)'
                 break;
 
-        }
+        };
+
+        `#Title${title}
+        ##Table of Contents
+        ##Installation
+        ##Usage
+        ##License
+        ##Contributing
+        ##Tests
+        ##Questions${username}${github}${email}
+        `
+
+
+
         response = {
             badge: badge,
             ...response
@@ -86,17 +100,6 @@ inquirer
         const repo = generateMarkdown(response)
 
 
-        //     axios.get(`https://api.github.com/users${response.Github}`).then(function (answers) {
-
-        //         console.log(answers);
-        //         const md = `
-        //         # ${answers.repoTitle} \n
-
-        //         ###### ${answers.description} \n
-
-
-
-        //         `;
 
         fs.writeFile("README2.md", repo, (err) => {
             if (err) {
@@ -106,10 +109,10 @@ inquirer
             }
         });
     })
-//         });
 
 
-//     });
+
+
 
 
 
