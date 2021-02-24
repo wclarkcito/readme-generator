@@ -1,14 +1,12 @@
 
-const axios = require("axios");
+
 const fs = require('fs');
 const inquirer = require('inquirer');
 const { title } = require("process");
 const generateMarkdown = require("./generateMarkdown");
-// const generateMarkdown = require("./generateMarkdown");
-//const generateMD = require("./generateMarkdown");
-//const questions = []
 
 
+//array of questions for user input
 
 inquirer
     .prompt([
@@ -61,6 +59,8 @@ inquirer
             message: 'What is your Email address?'
         }
 
+        //links to badges
+
     ])
     .then((response) => {
         let badge = ""
@@ -91,7 +91,7 @@ inquirer
         console.log(response)
         const repo = generateMarkdown(response)
 
-
+        //generates readme file
 
         fs.writeFile("README1.md", repo, (err) => {
             if (err) {
